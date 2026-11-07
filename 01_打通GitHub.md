@@ -1,7 +1,8 @@
 # 01 · 打通 GitHub
 
-> 目标：今天结束时，用手机浏览器打开自己的仓库，能看到这 6 个文件。
-> 预计 20–30 分钟，其中大部分是在网页上点几下。
+> 当前状态：第 1、2 步已完成，**直接从第 3 步开始做**。
+> 目标：今天结束时，用手机浏览器打开自己的仓库，能看到 7 个文件。
+> 剩余约 10 分钟。
 
 ---
 
@@ -32,59 +33,61 @@
 | `README.md` | 已由模板转正，写好了项目简介和进度表 |
 | 中文文件名 | 已设 `core.quotepath=false`，显示正常 |
 | VS Code | 装在 `E:\VSCode`，Python / Jupyter 扩展已装 |
+| GitHub 账号 | `DLZ66`（2026-11-07 注册，ID `353659693`） |
+| git 身份 | `DLZ66` / `353659693+DLZ66@users.noreply.github.com` |
+| 首次提交 | 已完成：`d0fbbd3`，7 个文件入库，分支 `main` |
 
-**还没做的**：git 的作者身份（`user.name` / `user.email`）和首次提交。
-这两项需要你的 GitHub 账号信息，见第 2 步。
+**本地部分已全部就绪**，只差「登录 + 发布」这两下，从第 3 步开始。
 
 ---
 
-## 第 1 步：GitHub 账号（只能你自己做，约 5 分钟）
+## 第 1 步：GitHub 账号 ✅ 已完成
 
-**已有账号** → 跳过，直接看第 2 步。
+账号 **`DLZ66`** 已注册，公开接口核验通过（HTTP 200，创建于 2026-11-07 15:57，仓库数 0）。
 
-**没有账号** → 打开 `github.com` → Sign up：
-
-1. 邮箱：用你常用的、能立刻收信的邮箱
-2. 密码、用户名
-3. 邮箱验证码
-4. 一路跳过问卷和套餐选择（**免费版够用**，不要选 Copilot 试用）
-
-⚠️ **用户名认真起一次，别用 `user12345` 这类**。它会永久出现在：
+你的仓库地址将是：
 
 ```
-https://github.com/<你的用户名>/data-analysis-journey
+https://github.com/DLZ66/data-analysis-journey
 ```
 
-这个链接 2028 年要写进简历，HR 会点开。建议：全小写英文、能看出是本人、不带随机数字。
-想不出就用 `姓名拼音 + ds` / `姓名拼音 + materials` 这类组合。
+这个链接 2028 年要写进简历，HR 会点开。用户名已经定下来了，以后别改（改了链接会失效）。
 
 ---
 
-## 第 2 步：告诉我两样东西（决定绿色格子会不会亮）
+## 第 2 步：git 身份与首次提交 ✅ 已完成
 
-需要：**GitHub 用户名** + **账号邮箱**。
+**不用再去 Settings 里翻邮箱了。** GitHub 给每个账号都配了一个固定的隐私邮箱，
+格式是 `账号ID+用户名@users.noreply.github.com`。用公开接口查到你的账号 ID 是
+`353659693`，所以直接算出来了：
 
-### 为什么邮箱很关键
+```
+user.name  = DLZ66
+user.email = 353659693+DLZ66@users.noreply.github.com
+```
 
-GitHub 判断一次提交算不算你的贡献，靠的是 **commit 里记录的 email 是否在你账号的邮箱列表里**。
+这个地址会被 GitHub 自动归属到你的账号，**真实邮箱不会出现在公开的提交记录里**，
+比直接填注册邮箱更好。已写入 git 全局配置，并完成首次提交 `d0fbbd3`。
 
-邮箱不匹配 → 代码确实推上去了，但**贡献图一片空白**，你计划里「绿色格子是学习日志」这条就落空了。而且这种问题事后要改历史，很麻烦。**第一次就配对。**
+### 为什么邮箱很关键（留个印象）
 
-### 在哪查邮箱
+GitHub 靠 commit 里的 email 判断这次提交算不算你的贡献。邮箱不匹配 → 代码确实推上去了，
+**贡献图却一片空白**，计划里「绿色格子是学习日志」就落空了。现在用的是官方 noreply
+地址，不会出这个问题。
 
-GitHub 右上角头像 → **Settings** → 左侧 **Emails**。
+### 想自己核对（可选）
 
-- 如果没开「Keep my email addresses private」→ 用页面上显示的那个主邮箱
-- 如果开了 → 页面上会有一串 `12345678+你的用户名@users.noreply.github.com`，用这串
+GitHub → 头像 → **Settings** → **Emails**，能看到这串 noreply 地址。
+建议顺手勾上：
 
-> 建议顺便把「Keep my email addresses private」勾上。commit 邮箱是公开的，
-> 勾上后 GitHub 会用 noreply 地址代替，避免真实邮箱被爬。
+- `Keep my email addresses private`
+- `Block command line pushes that expose my email`
 
-把这两样发给我，我会配好 `user.name` / `user.email` 并完成首次提交。
+两项都是防止真实邮箱被公开抓取。
 
 ---
 
-## 第 3 步：VS Code 登录 GitHub
+## 第 3 步：VS Code 登录 GitHub ← 现在从这里开始
 
 1. 双击桌面 **Visual Studio Code**
 2. **File → Open Folder** → 选 `E:\WorkBuddy\文档\阶段0_W1_启动包`
@@ -172,7 +175,7 @@ w1_我的作业.py
 
 | 现象 | 原因 | 处理 |
 |---|---|---|
-| 提示 `Author identity unknown` / 让填 name 和 email | git 身份没配 | 把用户名和邮箱发我，我配好再做首次提交 |
+| 提示 `Author identity unknown` | git 身份被重置了（正常不会） | 终端跑 `git config --global --list`，确认有 user.name / user.email |
 | 推送后贡献图没变绿 | commit 邮箱和 GitHub 账号邮箱不一致 | Settings → Emails 核对；已发生的提交要改历史，尽早发现 |
 | 浏览器授权页打不开 / 一直转 | 国内访问 GitHub 偶发波动 | 刷新重试；或用设备码方式 `github.com/login/device` |
 | `Publish to GitHub` 找不到 | 命令面板拼写、或没打开文件夹 | `Ctrl+Shift+P` → 输入 `Publish`，或确认已打开学习包文件夹 |

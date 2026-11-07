@@ -1,216 +1,113 @@
 # 01 · 打通 GitHub
 
-> 当前状态：第 1、2 步已完成，**直接从第 3 步开始做**。
-> 目标：今天结束时，用手机浏览器打开自己的仓库，能看到 7 个文件。
-> 剩余约 10 分钟。
+> ✅ **全部完成（2026-11-07 17:00）**。不用再照着做下面的步骤了，这份文档改为**排查手册 + 日常动作清单**。
+>
+> **仓库地址**：https://github.com/DLZ66/data-analysis-journey
 
 ---
 
-## 换个走法：不去网页建仓库
+## 一、验收结果（已用 GitHub 公开接口核对）
 
-之前提过「建仓库时别勾 Add a README file」这个坑。现在换一条更短的路，**网页建仓库这一步整个跳过**：
-
-用 VS Code 的 **Publish to GitHub**，它会从本地文件夹直接完成三件事：
-
-```
-① 在你的 GitHub 账号下创建远程仓库
-② 自动把它设为本地仓库的 origin
-③ 把第一次提交 push 上去
-```
-
-那个坑自然就不存在了。也不用配 SSH、不用生成 token、不用敲命令行。
-
----
-
-## 已经替你做好的部分（核对用）
-
-| 项 | 状态 |
+| 项 | 实际结果 |
 |---|---|
-| Git | 2.55.0，装在 `C:\Program Files\Git` |
-| 凭据助手 | `manager`（Windows 凭据管理器，登录一次会记住） |
-| 本地仓库 | 已 `git init`，默认分支 `main` |
-| `.gitignore` | 已配好：忽略 `.vscode/`、`__pycache__`、大文件 |
-| `README.md` | 已由模板转正，写好了项目简介和进度表 |
-| 中文文件名 | 已设 `core.quotepath=false`，显示正常 |
-| VS Code | 装在 `E:\VSCode`，Python / Jupyter 扩展已装 |
-| GitHub 账号 | `DLZ66`（2026-11-07 注册，ID `353659693`） |
-| git 身份 | `DLZ66` / `353659693+DLZ66@users.noreply.github.com` |
-| 首次提交 | 已完成：`d0fbbd3`，7 个文件入库，分支 `main` |
+| 可见性 | **public**（不是私有，链接可以直接写进简历） |
+| 默认分支 | `main` |
+| 文件 | 7 个，含 `data/messy_sample.csv`；`.vscode/` 已被正确忽略 |
+| 提交历史 | 2 个：`d0fbbd3` → `945aad7`，与本地完全一致 |
+| 提交作者 | `DLZ66`，邮箱 `353659693+DLZ66@users.noreply.github.com` |
+| 贡献归属 | ✅ GitHub 已识别为本人，绿色格子会亮（可能有几小时延迟） |
+| 本地关联 | `origin` → 远程仓库，`main` 已设 upstream |
+| 同步链路 | 已在「无代理的普通终端」下验证 `ls-remote` 正常 |
 
-**本地部分已全部就绪**，只差「登录 + 发布」这两下，从第 3 步开始。
+**真实邮箱没有出现在任何公开提交里。** 中途通过接口上传时曾短暂产生过带 QQ 邮箱的提交，已用强制推送覆盖掉，`main` 上不再有。
 
----
-
-## 第 1 步：GitHub 账号 ✅ 已完成
-
-账号 **`DLZ66`** 已注册，公开接口核验通过（HTTP 200，创建于 2026-11-07 15:57，仓库数 0）。
-
-你的仓库地址将是：
-
-```
-https://github.com/DLZ66/data-analysis-journey
-```
-
-这个链接 2028 年要写进简历，HR 会点开。用户名已经定下来了，以后别改（改了链接会失效）。
+换台设备（手机浏览器）打开上面的链接，能看到 7 个文件，今天这一步就算彻底结束。
 
 ---
 
-## 第 2 步：git 身份与首次提交 ✅ 已完成
-
-**不用再去 Settings 里翻邮箱了。** GitHub 给每个账号都配了一个固定的隐私邮箱，
-格式是 `账号ID+用户名@users.noreply.github.com`。用公开接口查到你的账号 ID 是
-`353659693`，所以直接算出来了：
+## 二、身份与配置（留档）
 
 ```
-user.name  = DLZ66
-user.email = 353659693+DLZ66@users.noreply.github.com
+GitHub 账号 : DLZ66（ID 353659693，2026-11-07 注册）
+git 用户名  : DLZ66
+git 邮箱    : 353659693+DLZ66@users.noreply.github.com
+凭据        : VS Code 授权后由 Windows 凭据管理器记住，不用重复登录
+Git         : 2.55.0
+Python 环境 : E:\miniconda3\envs\ds（Python 3.11.18）
+编辑器      : E:\VSCode
 ```
 
-这个地址会被 GitHub 自动归属到你的账号，**真实邮箱不会出现在公开的提交记录里**，
-比直接填注册邮箱更好。已写入 git 全局配置，并完成首次提交 `d0fbbd3`。
+> 建议在 GitHub → Settings → Emails 勾上
+> `Keep my email addresses private` 和 `Block command line pushes that expose my email`。
+> 前者让网页端也用隐私邮箱，后者能从源头拦住「误把真实邮箱推上去」。
 
-### 为什么邮箱很关键（留个印象）
-
-GitHub 靠 commit 里的 email 判断这次提交算不算你的贡献。邮箱不匹配 → 代码确实推上去了，
-**贡献图却一片空白**，计划里「绿色格子是学习日志」就落空了。现在用的是官方 noreply
-地址，不会出这个问题。
-
-### 想自己核对（可选）
-
-GitHub → 头像 → **Settings** → **Emails**，能看到这串 noreply 地址。
-建议顺手勾上：
-
-- `Keep my email addresses private`
-- `Block command line pushes that expose my email`
-
-两项都是防止真实邮箱被公开抓取。
+**为什么邮箱重要**：GitHub 靠 commit 里的 email 判断这次提交算不算你的贡献。邮箱对不上 → 代码推上去了，贡献图却一片空白，计划里「绿色格子是学习日志」就落空了。
 
 ---
 
-## 第 3 步：VS Code 登录 GitHub ← 现在从这里开始
+## 三、以后每天 / 每周的固定动作
 
-1. 双击桌面 **Visual Studio Code**
-2. **File → Open Folder** → 选 `E:\WorkBuddy\文档\阶段0_W1_启动包`
-3. 如果弹出「Do you trust the authors of the files in this folder?」→ 点 **Yes, I trust**
-4. 按 `Ctrl+Shift+G` 打开 **Source Control**（左侧第三个分支图标）
-5. 按 `Ctrl+Shift+P` → 输入 `Publish to GitHub` → 回车
-
-这时会**自动打开浏览器**，进入 GitHub 授权页：
-
-- 页面标题类似 `Authorize Visual Studio Code`
-- 点绿色的 **Authorize** 按钮
-- 可能要输一次 GitHub 密码
-- 浏览器提示「You may now close this window」→ 关掉标签页，回到 VS Code
-
-右下角如果弹出账号提示，说明登录成功。凭据会被 Windows 记住，**以后不用再登录**。
-
-> 如果浏览器没自动弹出：看 VS Code 右下角通知，里面有一个可复制的链接和验证码，
-> 手动打开 `https://github.com/login/device` 输入验证码也行。
-
----
-
-## 第 4 步：发布
-
-按提示依次回答：
-
-| 提示 | 填什么 |
-|---|---|
-| Repository name | `data-analysis-journey` |
-| Public / Private | **Public**（作品集要给人看；Private 的贡献默认不对外显示） |
-| Select files to include | 全勾（应该能看到 6 个文件） |
-
-然后等几秒。VS Code 底部状态栏会转一下，完成后 **「Publish to GitHub」按钮变成「Sync Changes」**，就是成功了。
-
----
-
-## 第 5 步：验证（今天的验收标准）
-
-用**手机浏览器**打开（换设备才能确认真的上传到了网上，不是只在本机）：
-
-```
-https://github.com/<你的用户名>/data-analysis-journey
-```
-
-应该看到这些文件：
-
-```
-.gitignore
-00_今天就开始.md
-01_打通GitHub.md
-README.md
-data/messy_sample.csv
-w1_参考答案.py
-w1_我的作业.py
-```
-
-**不应该看到 `.vscode/`** —— 它被 `.gitignore` 挡住了，这是对的（个人编辑器设置不该公开）。
-
-再点头像 → 个人主页，**今天的格子上应该有一个绿点**（有时延迟几小时，最多 24 小时）。
-
-✅ 看到这两样，今天就结束了。
-
----
-
-## 以后每天 / 每周的固定动作
-
-**每天写完代码（30 秒）**：
+**每天写完代码（30 秒）**
 
 1. `Ctrl+Shift+G` 打开源代码管理
-2. 在消息框写一句人话，例如 `W1D3: 用函数批量读取 CSV 完成`
+2. 消息框写一句人话，例如 `W1D3: 用函数批量读取 CSV 完成`
 3. 点 **✓ Commit**（VS Code 会自动暂存）
 4. 点 **Sync Changes**（上传）
 
-**每周日晚上（含在 30 分钟整理时间里）**：
+**每周日晚上（含在 30 分钟整理时间里）**
 
 - 更新 `README.md` 的进度表，把那一周 `⬜` 改成 `✅`
 - 写 3 句周报，追加到 `周报.md`（第二周开始建）
 - 提交并同步
 
-> 提交消息写「今天会了什么」比写 `update` 有用得多。秋招时面试官翻的是这段历史，
-> 能看出你是不是真的连续学了 30 个月。
-
----
-
-## 常见坑
-
-| 现象 | 原因 | 处理 |
-|---|---|---|
-| 提示 `Author identity unknown` | git 身份被重置了（正常不会） | 终端跑 `git config --global --list`，确认有 user.name / user.email |
-| 推送后贡献图没变绿 | commit 邮箱和 GitHub 账号邮箱不一致 | Settings → Emails 核对；已发生的提交要改历史，尽早发现 |
-| 浏览器授权页打不开 / 一直转 | 国内访问 GitHub 偶发波动 | 刷新重试；或用设备码方式 `github.com/login/device` |
-| `Publish to GitHub` 找不到 | 命令面板拼写、或没打开文件夹 | `Ctrl+Shift+P` → 输入 `Publish`，或确认已打开学习包文件夹 |
-| 提示 `repository already exists` | 之前已在网页建过同名仓库 | 换个名字，或删掉网页那个空仓库再发布 |
-| 文件列表里少了文件 | 被 `.gitignore` 挡了 | 正常，`.vscode/` 本就不该上传 |
-| `failed to connect` / timeout | 网络 | 见下方备选方案 |
-
----
-
-## 备选方案 B：VS Code 授权实在不通时（PAT）
-
-这条路要敲几行命令，但更抗网络波动。
-
-1. GitHub → 头像 → **Settings** → 左下 **Developer settings** →
-   **Personal access tokens → Tokens (classic)** → **Generate new token (classic)**
-2. Note 填 `my-laptop`，Expiration 选 `90 days`，**只勾 `repo`**
-3. 点生成，**立刻复制**（这串只显示一次）
-4. 在 GitHub 网页新建仓库，名字 `data-analysis-journey`，**README / .gitignore / license 三项全部不要勾**，创建后会看到一串命令，不用管
-5. 在「启动 ds 环境」那个黑窗口里：
+等价的命令行写法（在「启动 ds 环境」窗口里）：
 
 ```bash
 cd /d "E:\WorkBuddy\文档\阶段0_W1_启动包"
-git remote add origin https://github.com/<用户名>/data-analysis-journey.git
-git push -u origin main
+git add .
+git commit -m "W1D3: 用函数批量读取 CSV 完成"
+git push
 ```
 
-6. 弹出登录框时：用户名填 GitHub 用户名，**密码粘贴那串 token**（不是账号密码）
-7. Windows 凭据管理器会记住，以后 `git push` 不用再输
+> 提交消息写「今天会了什么」比写 `update` 有用得多。秋招时面试官翻的就是这段历史，
+> 能看出是不是真的连续学了 30 个月。**别断周**，哪怕某天只做 30 分钟也提交一次。
 
-> 三条铁律：**token 不要发给任何人、不要写进代码、不要提交到仓库**。
-> 泄露了就回第 1 步 Revoke 掉重新生成。
+**如果 Sync Changes 报网络错**：等半分钟重试一次；连续失败就看下面第五节的代理说明。
 
 ---
 
-## 命令速查（不用背，留着查）
+## 四、今天踩过的坑（以后遇到直接查这里）
+
+| 现象 | 原因 | 正确做法 |
+|---|---|---|
+| 发布后仓库名变成 `DLZ66/--0_W1_---` | 输入框预填了中文文件夹名，GitHub 仓库名不支持中文 | 蓝色选中状态下**直接敲** `data-analysis-journey` 整段替换 |
+| 建出来是私有仓库 | 下拉列表默认高亮第一行 `private repository` | **用鼠标点第二行 public**，别按回车 |
+| `Publish to GitHub` 按钮消失、再也不出现 | 发布失败但本地已写入一条错误的 `origin` | 终端跑 `git remote remove origin`，按钮会回来 |
+| `Sign in failed: network error` | VS Code 走了系统代理，而该代理访问 GitHub 超时 | 已在 VS Code 用户设置里关掉代理，见第五节 |
+| `Failed to connect to github.com:443` / 21 秒超时 | DNS 解析到坏 IP，或环境里被注入了代理变量 | 见第五节；命令行可加 `git -c http.proxy= push` 强制直连 |
+| 提交作者邮箱变成真实邮箱 | 绕过 git、用网页/API 直接上传文件时，GitHub 用账号主邮箱当作者 | 始终走 `git commit` + `git push`，作者才是配好的 noreply 地址 |
+
+最后一条最值得记：**作品集仓库的历史要走 git，不要用网页上传文件**。否则提交会被拆成一条一个文件，作者信息也不受控制。
+
+---
+
+## 五、为了打通做过的环境改动（都可逆，留档备查）
+
+| 改动 | 位置 | 怎么撤销 |
+|---|---|---|
+| 指定 `github.com` 的解析 IP | `C:\Windows\System32\drivers\etc\hosts` 追加 `20.27.177.113 github.com` | 删掉带 `# GitHub DNS fix 2026-11-07` 的两行；原文件备份在同目录 `hosts.bak.20261107` |
+| 让 VS Code 绕过代理 | `%APPDATA%\Code\User\settings.json`，两项 `http.proxySupport: off`、`http.proxy: ""` | 删掉这两项即可 |
+| 让中文文件名正常显示 | `git config --global core.quotepath false` | 不用撤，无害 |
+| 默认分支名 | `git config --global init.defaultBranch main` | 不用撤，无害 |
+| 工作区解释器 | `E:\WorkBuddy\文档\阶段0_W1_启动包\.vscode\settings.json` | 不用撤；该文件已被 `.gitignore` 排除 |
+
+> GitHub 的 IP 以后可能变。哪天又连不上 `github.com`，先删掉 hosts 里那行恢复自动解析，
+> 再判断是 DNS 问题还是网络波动。**不要剪切 `E:\miniconda3` 或 `E:\VSCode` 文件夹**，
+> 这两处路径被写进了大量配置，移动后整个环境会失效。
+
+---
+
+## 六、命令速查（不用背，留着查）
 
 | 命令 | 作用 |
 |---|---|
@@ -221,5 +118,22 @@ git push -u origin main
 | `git push` | 上传 |
 | `git pull` | 下载 |
 | `git remote -v` | 看远程仓库地址 |
+| `git -c http.proxy= push` | 绕过代理直连推送（网络异常时用） |
 
 日常在 VS Code 里点按钮就够了，命令行只在排查时用。
+
+---
+
+## 七、备选方案 B：凭据失效时（PAT）
+
+只在「换电脑 / 凭据被清掉 / VS Code 怎么都登不上」时才需要。
+
+1. GitHub → 头像 → **Settings** → **Developer settings** →
+   **Personal access tokens → Tokens (classic)** → **Generate new token (classic)**
+2. Note 填 `my-laptop`，Expiration 选 `90 days`，**只勾 `repo`**
+3. 点生成，**立刻复制**（只显示一次）
+4. 弹出登录框时：用户名填 GitHub 用户名，**密码粘贴那串 token**（不是账号密码）
+5. Windows 凭据管理器会记住，以后 `git push` 不用再输
+
+> 三条铁律：**token 不要发给任何人、不要写进代码、不要提交到仓库**。
+> 泄露了就回第 1 步 Revoke 掉重新生成。

@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 编辑器
+.vscode/
+.idea/
+
+# 数据文件（大数据不进仓库，练习数据保留）
+*.xlsx
+*.xls
+*.db
+*.sqlite
+
+# 输出
+result.txt
+*.log
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 阶段 1/2 的中间产物（大文件别进仓库）
+*.parquet
+*.feather
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.zip
+*.7z
+checkpoints/
+models/
+outputs/
+
+# 注意：练习用的 data/*.csv 要提交，所以这里故意不忽略 *.csv

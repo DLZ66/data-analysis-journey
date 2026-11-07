@@ -95,14 +95,20 @@ git push
 
 | 改动 | 位置 | 怎么撤销 |
 |---|---|---|
-| 指定 `github.com` 的解析 IP | `C:\Windows\System32\drivers\etc\hosts` 追加 `20.27.177.113 github.com` | 删掉带 `# GitHub DNS fix 2026-11-07` 的两行；原文件备份在同目录 `hosts.bak.20261107` |
+| 指定 `github.com` 的解析 IP | `C:\Windows\System32\drivers\etc\hosts` 追加 `20.205.243.166 github.com` | 删掉带 `# GitHub DNS fix 2026-11-07` 的两行；原文件备份在同目录 `hosts.bak.20261107` |
 | 让 VS Code 绕过代理 | `%APPDATA%\Code\User\settings.json`，两项 `http.proxySupport: off`、`http.proxy: ""` | 删掉这两项即可 |
 | 让中文文件名正常显示 | `git config --global core.quotepath false` | 不用撤，无害 |
 | 默认分支名 | `git config --global init.defaultBranch main` | 不用撤，无害 |
 | 工作区解释器 | `E:\WorkBuddy\文档\阶段0_W1_启动包\.vscode\settings.json` | 不用撤；该文件已被 `.gitignore` 排除 |
 
-> GitHub 的 IP 以后可能变。哪天又连不上 `github.com`，先删掉 hosts 里那行恢复自动解析，
-> 再判断是 DNS 问题还是网络波动。**不要剪切 `E:\miniconda3` 或 `E:\VSCode` 文件夹**，
+> **2026.11.07 17:30 记录**：最初写死的 `20.27.177.113` 当天下午就失效了
+> （`git push` 报 `Failed to connect to github.com:443`）。换成 `20.205.243.166` 后恢复正常。
+> 这说明 hosts 写 IP 只是临时办法 —— GitHub 的 IP 会变，甚至几小时内就变。
+> 哪天又连不上 `github.com`，**先删掉 hosts 里那行恢复自动解析**，
+> 再判断是 DNS 问题还是网络波动；确实还需要固定 IP 时，用
+> `nslookup github.com` 或 `curl --resolve github.com:443:<候选IP> https://github.com` 挑一个当前能用的。
+>
+> **不要剪切 `E:\miniconda3` 或 `E:\VSCode` 文件夹**，
 > 这两处路径被写进了大量配置，移动后整个环境会失效。
 
 ---
